@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 510" fill="#ffffff" xml:space="preserve" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="12">
+  <text x="220" y="24" font-size="14" font-weight="bold" fill="#111111">Grux PoC Architecture</text>
+
+  <text x="40" y="55" fill="#111111">┌────────────────────────┐         ┌──────────────────────────┐</text>
+  <text x="40" y="72" fill="#111111">│   Flutter Mobile App   │         │      Flutter Web         │</text>
+  <text x="40" y="89" fill="#111111">│   (mobile/lib/)        │         │   (same code, web target) │</text>
+  <text x="40" y="106" fill="#111111">└────────────┬───────────┘         └──────────────┬───────────┘</text>
+  <text x="40" y="123" fill="#111111">             │                                    │</text>
+  <text x="40" y="140" fill="#111111">             │       HTTP REST + JSON             │</text>
+  <text x="40" y="157" fill="#111111">             │    (with X-Request-Id tracing)     │</text>
+  <text x="40" y="174" fill="#111111">             ▼                                    ▼</text>
+
+  <text x="40" y="191" fill="#111111">┌────────────────────────────────────────────────────────────┐</text>
+  <text x="40" y="208" fill="#111111">│              Go Backend (Cloud Run)                        │</text>
+  <text x="40" y="225" fill="#111111">│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │</text>
+  <text x="40" y="242" fill="#111111">│  │ Middleware   │→ │   Handlers   │→ │  In-Memory   │     │</text>
+  <text x="40" y="259" fill="#111111">│  │ - RequestID  │  │ - /health    │  │   Store      │     │</text>
+  <text x="40" y="276" fill="#111111">│  │ - CORS       │  │ - /api/items │  │ (PoC only)   │     │</text>
+  <text x="40" y="293" fill="#111111">│  │ - Logger     │  │              │  │              │     │</text>
+  <text x="40" y="310" fill="#111111">│  │ - Recover    │  │              │  │              │     │</text>
+  <text x="40" y="327" fill="#111111">│  └──────────────┘  └──────────────┘  └──────────────┘     │</text>
+  <text x="40" y="344" fill="#111111">└────────────────────────────────────────────────────────────┘</text>
+
+  <text x="40" y="361" fill="#111111">             │</text>
+  <text x="40" y="378" fill="#111111">             │  Production swap: in-memory → Postgres (Cloud SQL)</text>
+  <text x="40" y="395" fill="#111111">             ▼</text>
+
+  <text x="40" y="412" fill="#111111">┌────────────────────────────────────────────────────────────┐</text>
+  <text x="40" y="429" fill="#111111">│              GCP Cloud SQL Postgres                         │</text>
+  <text x="40" y="446" fill="#111111">│              (planned for production)                        │</text>
+  <text x="40" y="463" fill="#111111">└────────────────────────────────────────────────────────────┘</text>
+</svg>
