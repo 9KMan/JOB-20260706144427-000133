@@ -1,0 +1,23 @@
+# Reduce Docker build context: skip VCS, planning, docs not needed at runtime,
+# and any local build artifacts.
+.git
+.gitignore
+.planning
+bin/
+*.test
+*.out
+*.prof
+*.log
+.DS_Store
+.idea
+.vscode
+
+# Allow the project README and SPEC to ship with the image is unnecessary
+# (they are markdown, not runtime assets), but we whitelist them so an
+# operator can `docker run --rm grux-poc-api:latest cat /SPEC.md` if needed.
+!SPEC.md
+!README.md
+
+# Exclude CI/CD noise.
+.github
+.gitlab-ci.yml
