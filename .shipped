@@ -1,0 +1,22 @@
+{
+  "shipped_at": "2026-07-06T18:03:00+07:00",
+  "job_id": "JOB-20260706144427-000133",
+  "phase": "PoC complete",
+  "github_url": "https://github.com/9KMan/JOB-20260706144427-000133",
+  "default_branch": "main",
+  "merges": [
+    {"branch": "feature/phase-1-go-backend", "sha": "e3f9ad0", "files": 13, "phase": "Phase 1: Go backend"},
+    {"branch": "feature/phase-5-6-7", "sha": "d6eff95", "files": 13, "phase": "Phases 5-7: Flutter + GCP + OUT_OF_SCOPE"}
+  ],
+  "final_sha": "main HEAD (post-merge)",
+  "test_results": {
+    "go_build": "PASS",
+    "go_test": "PASS (8 tests across internal/api and internal/store)",
+    "yaml_validation": "PASS (pubspec.yaml, analysis_options.yaml, cloudbuild.yaml)",
+    "bash_validation": "PASS (deploy.sh syntax)",
+    "flutter_analyze": "skipped — Flutter SDK not in environment"
+  },
+  "file_count": 27,
+  "lines_of_code": 2125,
+  "ready_for_apply": true
+}

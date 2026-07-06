@@ -1,0 +1,130 @@
+{
+  "job_id": "JOB-20260706144427-000133",
+  "title": "Senior Full-Stack Software Engineer - Golang & Flutter",
+  "client": "Grux (early-stage B2B SaaS, US-based, globally distributed team, knowledge management system)",
+  "tier": "EXPERT",
+  "rate": 35,
+  "budget": "$10-35/hr (client explicitly open to higher rates for experienced; bidding top-of-band $35/hr)",
+  "duration": ">6 months, contract-to-hire (long-term; potential full-time conversion)",
+  "hourly": true,
+  "project_type": "Ongoing project / Contract-to-hire",
+  "engagement_type": "code-build",
+  "engagement_shape": "full-time (40h/wk) with PT overlap; cross-trained on two products (Grux + Rook); long-term hire intent",
+  "lead_url": "https://www.upwork.com/jobs/~022074141330976332061?referrer_url_path=%2Fbest-matches%2Fdetails%2F~022074141330976332061",
+  "intake_source": "manual_url",
+  "state": "IN_REVIEW",
+  "source": "upwork",
+  "posted_when": "2026-07-06 (3 minutes ago at intake)",
+  "proposals_count": "<5 (very low; client just posted)",
+  "interviewing": 0,
+  "invites_sent": 0,
+  "unanswered_invites": 0,
+  "last_viewed_by_client": "fresh post",
+  "client_payment_verified": true,
+  "client_hiring_history": "Featured Job (Upwork promotion); expert tier; ongoing; worldwide with approved-region restriction",
+  "tech_stack": [
+    "Golang",
+    "Go",
+    "Flutter",
+    "Dart",
+    "JavaScript",
+    "Google Cloud Platform (GCP)",
+    "Cloud-native",
+    "Node.js (acceptable alt)",
+    "Google APIs",
+    "Chrome Extensions",
+    "Google Chat apps",
+    "Function-oriented architecture",
+    "CI/CD",
+    "GCP services (Cloud Run, GKE, Pub/Sub, Cloud SQL, etc.)"
+  ],
+  "skills_mandatory": [
+    "Google Cloud Platform",
+    "Golang",
+    "API",
+    "Flutter"
+  ],
+  "skills_preferred": [
+    "Node.js",
+    "Dart",
+    "JavaScript",
+    "Google APIs",
+    "Chrome Extensions",
+    "Google Chat integrations",
+    "Function-oriented architecture",
+    "Bachelor's degree in CS/EE"
+  ],
+  "tags": [
+    "golang",
+    "flutter",
+    "dart",
+    "gcp",
+    "cloud-native",
+    "full-stack",
+    "early-stage-saas",
+    "b2b",
+    "knowledge-management",
+    "contract-to-hire",
+    "long-term",
+    "expert",
+    "pt-overlap-required"
+  ],
+  "description": "Grux (early-stage B2B SaaS, US-based, global team) hiring Senior Full-Stack Software Engineer. Golang backend + Flutter frontend (with Dart/JS). Cloud-native on GCP. Cross-trained on two products (Grux + Rook). Full-time, >30 hrs/wk, >6 months, contract-to-hire. Requires PT (Pacific Time, US West Coast) overlap during 8a-5p PT. Must be in approved regions/time zones. Strong preference for applicants with GCP + Go + Flutter production experience. Mandatory: 5+ years cloud-native, strong Go, hands-on Flutter, GCP ops, fluent English, full-time PT overlap.",
+  "questions_to_answer": [
+    "Q1 (required): Describe your last two roles as a developer, including important responsibilities and deliverables.",
+    "Q2 (required): Have you delivered on an application from start to finish? If not, describe a project you had significant ownership over.",
+    "Q3 (required): Are you comfortable working in PT (Pacific Time) zone?",
+    "Q4 (required): What is your experience with Flutter?",
+    "Q5 (required): What is your experience with GCP?"
+  ],
+  "estimated_value": {
+    "rate": "$35/hr (top of $10-35 band; client explicitly open to higher for fit)",
+    "duration": ">6 months, contract-to-hire",
+    "hours_per_week": "30-40 hrs/wk (likely 40 for full-time PT overlap)",
+    "annual_revenue_at_40h": "$35 * 40 * 52 = $72,800/yr (with potential conversion to salaried FTE at higher comp)"
+  },
+  "required_tz_overlap": "8a-5p Pacific Time (UTC-8 PST / UTC-7 PDT). Required full-time with PT business hours.",
+  "approved_regions": "Not explicitly listed in JD; client says 'specific approved locations/time zones' but doesn't enumerate. Common approved: US, Canada, Mexico, LATAM (similar PT-friendly TZs), UK (overlap hours), parts of EU (with PT shift). Bangkok (UTC+7) = 16h ahead of PT (PST); 8a-5p PT = 00:00-09:00 BKK next day. NOT viable for synchronous PT overlap.",
+  "notes": "STRONG TECH FIT BUT CRITICAL TZ CONFLICT. Tech stack: Go + Flutter + GCP is a deep technical match for senior full-stack work \u2014 but the JD requires 8a-5p Pacific Time synchronous overlap. Bangkok (UTC+7) is 15-16h ahead of PT. 8a-5p PT = midnight-9am BKK next day. Real PT-overlap options for BKK-based engineer: (a) work graveyard shift 00:00-09:00 BKK (unhealthy long-term), (b) relocate to PT zone (not feasible mid-engagement), (c) negotiate modified overlap (e.g., 4-6h of PT overlap instead of full 9h). JD explicitly says 'Must be available for full-time work with overlap during Pacific Time business hours' and 'Must be located in approved regions/time zones' \u2014 this is a HARD filter, not a soft preference. **Decision: low-confidence bid with explicit TZ disclosure in proposal.** Same pattern as Job-128/130/131. Bid $35/hr top-of-band. If client accepts modified TZ (e.g., 4-6h PT overlap with async work outside), win probability improves. If client insists on full 9h PT overlap, not a fit. Client posted 3 min ago, <5 proposals \u2014 open competition.",
+  "decision": "BID (low confidence)",
+  "confidence": 0.3,
+  "decision_rationale": "Strong tech-stack fit (Go + Flutter + GCP is in our integration+AI adjacent territory; user has 20+ years production engineering including cloud-native work on Azure AKS and 3,000+ POS terminals 24/7). BUT critical TZ conflict \u2014 JD requires full-time 8a-5p PT overlap, Bangkok is 15-16h ahead, not viable for synchronous work. Bid at top-of-band $35/hr with explicit TZ disclosure in proposal. If client accepts modified overlap (4-6h PT + async outside), strong candidate. If client insists on full PT overlap, not a fit. <5 proposals in 3 min \u2014 open competition, worth the bid.",
+  "qualifier_breakdown": {
+    "tech_stack": "20/25 \u2014 Go + Flutter + GCP is strong fit, but NOT core stack (user's primary is Python/FastAPI/Prefect/Dask, not Go/Flutter). JavaScript adjacent. Node.js alt acceptable.",
+    "budget": "8/25 \u2014 low band ceiling ($10-35/hr); client explicitly open to higher = maybe stretched at interview",
+    "scope": "10/20 \u2014 strong scope (cloud-native platform, two products, full-time, >6 months, contract-to-hire); long-term upside",
+    "hours": "10/15 \u2014 30-40 hrs/wk, but PT-overlap constraint reduces practical availability from Bangkok",
+    "deadline": "10/10 \u2014 >6 months ongoing + contract-to-hire = strong recurring revenue",
+    "client_tone": "4/5 \u2014 clear, professional, well-defined role; 'approved regions' is ambiguous but not hostile",
+    "total": "62/100"
+  },
+  "manual_override": null,
+  "risk_overrides": {
+    "video_filter": "none (no video mentioned in process)",
+    "skill_mismatch": "medium \u2014 Go + Flutter NOT core stack but adjacent; Node.js alt is closer to user's JS exposure",
+    "domain_out_of_lane": false,
+    "low_confidence_bid": true,
+    "tz_overlap_blocking": true,
+    "approved_regions_ambiguous": true,
+    "override_reason": "Tech-stack fit is strong, but TZ requirement is hard blocker. Bid with explicit TZ disclosure; outcome depends on client's flexibility on overlap hours."
+  },
+  "created_at": "2026-07-06T14:44:27+00:00",
+  "updated_at": "2026-07-06T14:53:16.901026+00:00",
+  "_version": 2,
+  "history": [
+    {
+      "ts": "2026-07-06T14:44:27+00:00",
+      "event": "intake_url_submitted",
+      "url": "https://www.upwork.com/jobs/~022074141330976332061"
+    },
+    {
+      "ts": "2026-07-06T14:53:16.901069+00:00",
+      "event": "ceo_review_created",
+      "issue_id": "d52e3a67-d40a-49c3-8c37-be9ab8f3ed8e",
+      "multica_number": 795
+    }
+  ],
+  "multica_issue_id": "d52e3a67-d40a-49c3-8c37-be9ab8f3ed8e",
+  "multica_number": 795,
+  "ceo_review_issue_id": "d52e3a67-d40a-49c3-8c37-be9ab8f3ed8e"
+}
