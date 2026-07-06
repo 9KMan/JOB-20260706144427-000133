@@ -1,0 +1,56 @@
+# Cloud Build pipeline for Grux PoC API
+# Steps:
+#   1. Build Docker image
+#   2. Push to Artifact Registry
+#   3. Deploy to Cloud Run
+#
+# Required substitutions (set via --substitutions or trigger):
+#   _REGION: GCP region (default: us-central1)
+#   _REPO: Artifact Registry repo name (default: grux-poc)
+#   _SERVICE: Cloud Run service name (default: grux-poc-api)
+
+steps:
+  - id: build
+    name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/${_SERVICE}:${SHORT_SHA}
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/${_SERVICE}:latest
+      - .
+
+  - id: push
+    name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - --all-tags
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/${_SERVICE}
+
+  - id: deploy
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - ${_SERVICE}
+      - --image=${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/${_SERVICE}:${SHORT_SHA}
+      - --region=${_REGION}
+      - --platform=managed
+      - --allow-unauthenticated
+      - --port=8080
+      - --memory=512Mi
+      - --cpu=1
+      - --max-instances=10
+
+images:
+  - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/${_SERVICE}:${SHORT_SHA}
+  - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/${_SERVICE}:latest
+
+substitutions:
+  _REGION: us-central1
+  _REPO: grux-poc
+  _SERVICE: grux-poc-api
+
+options:
+  logging: CLOUD_LOGGING_ONLY
