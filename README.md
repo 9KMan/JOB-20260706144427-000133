@@ -43,77 +43,11 @@ export GCP_REGION=us-central1
 
 ## Architecture
 
-```
-┌────────────────────────┐         ┌──────────────────────────┐
-│   Flutter Mobile App   │         │      Flutter Web         │
-│   (mobile/lib/)        │         │   (same code, web target) │
-└────────────┬───────────┘         └──────────────┬───────────┘
-             │                                    │
-             │       HTTP REST + JSON             │
-             │    (with X-Request-Id tracing)     │
-             ▼                                    ▼
-┌────────────────────────────────────────────────────────────┐
-│              Go Backend (Cloud Run)                        │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │
-│  │ Middleware   │→ │   Handlers   │→ │  In-Memory   │     │
-│  │ - RequestID  │  │ - /health    │  │   Store      │     │
-│  │ - CORS       │  │ - /api/items │  │ (PoC only)   │     │
-│  │ - Logger     │  │              │  │              │     │
-│  │ - Recover    │  │              │  │              │     │
-│  └──────────────┘  └──────────────┘  └──────────────┘     │
-└────────────────────────────────────────────────────────────┘
-             │
-             │  Production swap: in-memory → Postgres (Cloud SQL)
-             ▼
-┌────────────────────────────────────────────────────────────┐
-│              GCP Cloud SQL Postgres                         │
-│              (planned for production)                        │
-└────────────────────────────────────────────────────────────┘
-```
+<img src="./diagrams/architecture.svg" alt="Grux PoC Architecture" width="800">
 
 ## Project Structure
 
-```
-.
-├── SPEC.md                          # PoC scope + acceptance criteria
-├── OUT_OF_SCOPE.md                  # Deferred features + production roadmap
-├── README.md                        # This file
-├── RUNBOOK.md                       # Operations: run, test, deploy, troubleshoot
-│
-├── cmd/api/main.go                  # Go entrypoint with graceful shutdown
-├── internal/
-│   ├── api/
-│   │   ├── handlers.go              # HTTP handlers (health, items CRUD)
-│   │   ├── handlers_test.go         # httptest-based tests
-│   │   └── middleware.go            # RequestID, CORS, Recover, Logger
-│   ├── model/item.go                # Item entity
-│   └── store/
-│       ├── memory.go                # In-memory ItemStore (thread-safe)
-│       └── memory_test.go           # Store tests
-│
-├── mobile/                          # Flutter app
-│   ├── pubspec.yaml                 # Dependencies (http, provider)
-│   ├── analysis_options.yaml        # Lints config
-│   ├── lib/
-│   │   ├── main.dart                # App entry
-│   │   ├── models/item.dart         # Item model
-│   │   ├── services/api_client.dart # HTTP client wrapping Go API
-│   │   ├── providers/items_provider.dart  # State management
-│   │   └── screens/items_screen.dart     # List + add UI
-│   └── test/widget_test.dart        # Smoke test
-│
-├── deploy/                          # GCP deployment
-│   ├── cloudbuild.yaml              # Cloud Build pipeline
-│   ├── deploy.sh                    # Bootstrap script
-│   ├── env.example                  # Environment variables
-│   └── README.md                    # Deploy instructions
-│
-├── Dockerfile                       # Multi-stage build (Go 1.22 → distroless)
-├── .dockerignore                    # Excludes from Docker build context
-├── Makefile                         # build, test, run, docker-build
-├── go.mod                           # Go dependencies
-└── go.sum                           # Pinned checksums
-```
+<img src="./diagrams/project-structure.svg" alt="Grux PoC File Structure" width="800">
 
 ## Tech Stack
 

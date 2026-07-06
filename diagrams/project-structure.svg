@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 680" fill="#ffffff" xml:space="preserve" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="12">
+  <text x="240" y="24" font-size="14" font-weight="bold" fill="#111111">Grux PoC File Structure</text>
+
+  <text x="40" y="50" fill="#111111">.</text>
+  <text x="40" y="66" fill="#111111">├── SPEC.md                          # PoC scope + acceptance criteria</text>
+  <text x="40" y="82" fill="#111111">├── OUT_OF_SCOPE.md                  # Deferred features + production roadmap</text>
+  <text x="40" y="98" fill="#111111">├── README.md                        # This file</text>
+  <text x="40" y="114" fill="#111111">├── RUNBOOK.md                       # Operations: run, test, deploy, troubleshoot</text>
+  <text x="40" y="130" fill="#111111">│</text>
+  <text x="40" y="146" fill="#111111">├── cmd/api/main.go                  # Go entrypoint with graceful shutdown</text>
+  <text x="40" y="162" fill="#111111">├── internal/</text>
+  <text x="40" y="178" fill="#111111">│   ├── api/</text>
+  <text x="40" y="194" fill="#111111">│   │   ├── handlers.go              # HTTP handlers (health, items CRUD)</text>
+  <text x="40" y="210" fill="#111111">│   │   ├── handlers_test.go         # httptest-based tests</text>
+  <text x="40" y="226" fill="#111111">│   │   └── middleware.go            # RequestID, CORS, Recover, Logger</text>
+  <text x="40" y="242" fill="#111111">│   ├── model/item.go                # Item entity</text>
+  <text x="40" y="258" fill="#111111">│   └── store/</text>
+  <text x="40" y="274" fill="#111111">│       ├── memory.go                # In-memory ItemStore (thread-safe)</text>
+  <text x="40" y="290" fill="#111111">│       └── memory_test.go           # Store tests</text>
+  <text x="40" y="306" fill="#111111">│</text>
+  <text x="40" y="322" fill="#111111">├── mobile/                          # Flutter app</text>
+  <text x="40" y="338" fill="#111111">│   ├── pubspec.yaml                 # Dependencies (http, provider)</text>
+  <text x="40" y="354" fill="#111111">│   ├── analysis_options.yaml        # Lints config</text>
+  <text x="40" y="370" fill="#111111">│   ├── lib/</text>
+  <text x="40" y="386" fill="#111111">│   │   ├── main.dart                # App entry</text>
+  <text x="40" y="402" fill="#111111">│   │   ├── models/item.dart         # Item model</text>
+  <text x="40" y="418" fill="#111111">│   │   ├── services/api_client.dart # HTTP client wrapping Go API</text>
+  <text x="40" y="434" fill="#111111">│   │   ├── providers/items_provider.dart  # State management</text>
+  <text x="40" y="450" fill="#111111">│   │   └── screens/items_screen.dart     # List + add UI</text>
+  <text x="40" y="466" fill="#111111">│   └── test/widget_test.dart        # Smoke test</text>
+  <text x="40" y="482" fill="#111111">│</text>
+  <text x="40" y="498" fill="#111111">├── deploy/                          # GCP deployment</text>
+  <text x="40" y="514" fill="#111111">│   ├── cloudbuild.yaml              # Cloud Build pipeline</text>
+  <text x="40" y="530" fill="#111111">│   ├── deploy.sh                    # Bootstrap script</text>
+  <text x="40" y="546" fill="#111111">│   ├── env.example                  # Environment variables</text>
+  <text x="40" y="562" fill="#111111">│   └── README.md                    # Deploy instructions</text>
+  <text x="40" y="578" fill="#111111">│</text>
+  <text x="40" y="594" fill="#111111">├── Dockerfile                       # Multi-stage build (Go 1.22 → distroless)</text>
+  <text x="40" y="610" fill="#111111">├── .dockerignore                    # Excludes from Docker build context</text>
+  <text x="40" y="626" fill="#111111">├── Makefile                         # build, test, run, docker-build</text>
+  <text x="40" y="642" fill="#111111">├── go.mod                           # Go dependencies</text>
+  <text x="40" y="658" fill="#111111">└── go.sum                           # Pinned checksums</text>
+</svg>
