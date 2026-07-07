@@ -1,32 +1,99 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 510" fill="#ffffff" xml:space="preserve" font-family="Menlo, Consolas, 'Courier New', monospace" font-size="12">
-  <text x="220" y="24" font-size="14" font-weight="bold" fill="#111111">Grux PoC Architecture</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 600" width="1100" height="600">
+  <defs>
+    <style>
+      .title     { font: 700 18px 'Inter', 'Helvetica Neue', sans-serif; fill: #0B2545; letter-spacing: 0.4px; }
+      .subtitle  { font: 11px 'Inter', sans-serif; fill: #13315C; opacity: 0.7; }
+      .node-name { font: 600 13px 'Inter', sans-serif; fill: #0B2545; }
+      .node-sub  { font: 10px 'Inter', sans-serif; fill: #13315C; opacity: 0.75; }
+      .edge-lbl  { font: 500 10px 'Inter', sans-serif; fill: #1B9AAA; }
+      .footnote  { font: 10px 'Inter', sans-serif; fill: #13315C; opacity: 0.55; }
+      .layer-tag { font: 600 11px 'Inter', sans-serif; fill: #1B9AAA; letter-spacing: 1px; }
+    </style>
+    <pattern id="dotgrid" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.7" fill="#E5E9F0" opacity="0.55"/>
+    </pattern>
+    <linearGradient id="edgeGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#1B9AAA" stop-opacity="0.15"/>
+      <stop offset="50%"  stop-color="#1B9AAA" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#1B9AAA" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  <rect width="1100" height="600" fill="#FFFFFF"/>
+  <rect width="1100" height="600" fill="url(#dotgrid)" opacity="0.6"/>
+  <text x="40" y="38" class="title">Grux PoC &#183; System Architecture</text>
+  <text x="40" y="58" class="subtitle">Flutter Mobile/Web &#8594; HTTP REST + JSON &#8594; Go API &#8594; Cloud SQL Postgres</text>
+  <text x="40" y="100" class="layer-tag">01 &#183; CLIENTS</text>
+  <polygon points="80,130 220,130 207.87564434701787,123.0 67.87564434701785,123.0"   fill="#FFFFFF"   stroke="#13315C" stroke-width="1.2" stroke-linejoin="round"/>
+  <polygon points="220,130 220,220 207.87564434701787,213.0 207.87564434701787,123.0" fill="#F4F7FB" stroke="#13315C" stroke-width="1.2" stroke-linejoin="round"/>
+  <polygon points="80,130 80,220 67.87564434701785,213.0 67.87564434701785,123.0"  fill="#F4F7FB"  stroke="#13315C" stroke-width="1.2" stroke-linejoin="round"/>
+  <rect x="80" y="130" width="140" height="90" fill="none" stroke="#13315C" stroke-width="1.2"/>
+  <polyline points="80,130 220,130 220,220 80,220" fill="none" stroke="#13315C" stroke-width="1.2"/>
 
-  <text x="40" y="55" fill="#111111">┌────────────────────────┐         ┌──────────────────────────┐</text>
-  <text x="40" y="72" fill="#111111">│   Flutter Mobile App   │         │      Flutter Web         │</text>
-  <text x="40" y="89" fill="#111111">│   (mobile/lib/)        │         │   (same code, web target) │</text>
-  <text x="40" y="106" fill="#111111">└────────────┬───────────┘         └──────────────┬───────────┘</text>
-  <text x="40" y="123" fill="#111111">             │                                    │</text>
-  <text x="40" y="140" fill="#111111">             │       HTTP REST + JSON             │</text>
-  <text x="40" y="157" fill="#111111">             │    (with X-Request-Id tracing)     │</text>
-  <text x="40" y="174" fill="#111111">             ▼                                    ▼</text>
+  <text x="96" y="160" class="node-name">Flutter Mobile</text>
+  <text x="96" y="180" class="node-sub">iOS / Android</text>
+  <rect x="80" y="130" width="140" height="5" rx="2" fill="#1B9AAA" opacity="0.85"/>
+  <polygon points="290,130 430,130 417.87564434701784,123.0 277.87564434701784,123.0"   fill="#FFFFFF"   stroke="#13315C" stroke-width="1.2" stroke-linejoin="round"/>
+  <polygon points="430,130 430,220 417.87564434701784,213.0 417.87564434701784,123.0" fill="#F4F7FB" stroke="#13315C" stroke-width="1.2" stroke-linejoin="round"/>
+  <polygon points="290,130 290,220 277.87564434701784,213.0 277.87564434701784,123.0"  fill="#F4F7FB"  stroke="#13315C" stroke-width="1.2" stroke-linejoin="round"/>
+  <rect x="290" y="130" width="140" height="90" fill="none" stroke="#13315C" stroke-width="1.2"/>
+  <polyline points="290,130 430,130 430,220 290,220" fill="none" stroke="#13315C" stroke-width="1.2"/>
 
-  <text x="40" y="191" fill="#111111">┌────────────────────────────────────────────────────────────┐</text>
-  <text x="40" y="208" fill="#111111">│              Go Backend (Cloud Run)                        │</text>
-  <text x="40" y="225" fill="#111111">│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │</text>
-  <text x="40" y="242" fill="#111111">│  │ Middleware   │→ │   Handlers   │→ │  In-Memory   │     │</text>
-  <text x="40" y="259" fill="#111111">│  │ - RequestID  │  │ - /health    │  │   Store      │     │</text>
-  <text x="40" y="276" fill="#111111">│  │ - CORS       │  │ - /api/items │  │ (PoC only)   │     │</text>
-  <text x="40" y="293" fill="#111111">│  │ - Logger     │  │              │  │              │     │</text>
-  <text x="40" y="310" fill="#111111">│  │ - Recover    │  │              │  │              │     │</text>
-  <text x="40" y="327" fill="#111111">│  └──────────────┘  └──────────────┘  └──────────────┘     │</text>
-  <text x="40" y="344" fill="#111111">└────────────────────────────────────────────────────────────┘</text>
+  <text x="306" y="160" class="node-name">Flutter Web</text>
+  <text x="306" y="180" class="node-sub">same codebase</text>
+  <rect x="290" y="130" width="140" height="5" rx="2" fill="#1B9AAA" opacity="0.85"/>
+  <text x="500" y="100" class="layer-tag">02 &#183; API LAYER</text>
+  <polygon points="500,130 820,130 807.8756443470179,123.0 487.87564434701784,123.0"   fill="#FFFFFF"   stroke="#13315C" stroke-width="1.2" stroke-linejoin="round"/>
+  <polygon points="820,130 820,370 807.8756443470179,363.0 807.8756443470179,123.0" fill="#F4F7FB" stroke="#13315C" stroke-width="1.2" stroke-linejoin="round"/>
+  <polygon points="500,130 500,370 487.87564434701784,363.0 487.87564434701784,123.0"  fill="#F4F7FB"  stroke="#13315C" stroke-width="1.2" stroke-linejoin="round"/>
+  <rect x="500" y="130" width="320" height="240" fill="none" stroke="#13315C" stroke-width="1.2"/>
+  <polyline points="500,130 820,130 820,370 500,370" fill="none" stroke="#13315C" stroke-width="1.2"/>
 
-  <text x="40" y="361" fill="#111111">             │</text>
-  <text x="40" y="378" fill="#111111">             │  Production swap: in-memory → Postgres (Cloud SQL)</text>
-  <text x="40" y="395" fill="#111111">             ▼</text>
+  <text x="516" y="156" class="node-name">Go Backend &#183; Cloud Run</text>
+  <text x="516" y="176" class="node-sub">1.22+ &#183; Gin &#183; port 8080</text>
+  <rect x="500" y="130" width="320" height="5" rx="2" fill="#1B9AAA" opacity="0.85"/>
+  <polygon points="520,190 610,190 597.8756443470179,183.0 507.87564434701784,183.0"   fill="#FFFFFF"   stroke="#13315C" stroke-width="1.2" stroke-linejoin="round"/>
+  <polygon points="610,190 610,260 597.8756443470179,253.0 597.8756443470179,183.0" fill="#F4F7FB" stroke="#13315C" stroke-width="1.2" stroke-linejoin="round"/>
+  <polygon points="520,190 520,260 507.87564434701784,253.0 507.87564434701784,183.0"  fill="#F4F7FB"  stroke="#13315C" stroke-width="1.2" stroke-linejoin="round"/>
+  <rect x="520" y="190" width="90" height="70" fill="none" stroke="#13315C" stroke-width="1.2"/>
+  <polyline points="520,190 610,190 610,260 520,260" fill="none" stroke="#13315C" stroke-width="1.2"/>
 
-  <text x="40" y="412" fill="#111111">┌────────────────────────────────────────────────────────────┐</text>
-  <text x="40" y="429" fill="#111111">│              GCP Cloud SQL Postgres                         │</text>
-  <text x="40" y="446" fill="#111111">│              (planned for production)                        │</text>
-  <text x="40" y="463" fill="#111111">└────────────────────────────────────────────────────────────┘</text>
+  <text x="532" y="216" class="node-name">Middleware</text>
+  <text x="532" y="234" class="node-sub">RequestID</text>
+  <text x="532" y="248" class="node-sub">CORS / Logger</text>
+  <polygon points="625,190 715,190 702.8756443470179,183.0 612.8756443470179,183.0"   fill="#FFFFFF"   stroke="#13315C" stroke-width="1.2" stroke-linejoin="round"/>
+  <polygon points="715,190 715,260 702.8756443470179,253.0 702.8756443470179,183.0" fill="#F4F7FB" stroke="#13315C" stroke-width="1.2" stroke-linejoin="round"/>
+  <polygon points="625,190 625,260 612.8756443470179,253.0 612.8756443470179,183.0"  fill="#F4F7FB"  stroke="#13315C" stroke-width="1.2" stroke-linejoin="round"/>
+  <rect x="625" y="190" width="90" height="70" fill="none" stroke="#13315C" stroke-width="1.2"/>
+  <polyline points="625,190 715,190 715,260 625,260" fill="none" stroke="#13315C" stroke-width="1.2"/>
+
+  <text x="637" y="216" class="node-name">Handlers</text>
+  <text x="637" y="234" class="node-sub">/health</text>
+  <text x="637" y="248" class="node-sub">/api/items</text>
+  <polygon points="730,190 810,190 797.8756443470179,183.0 717.8756443470179,183.0"   fill="#FFFFFF"   stroke="#13315C" stroke-width="1.2" stroke-linejoin="round"/>
+  <polygon points="810,190 810,260 797.8756443470179,253.0 797.8756443470179,183.0" fill="#F4F7FB" stroke="#13315C" stroke-width="1.2" stroke-linejoin="round"/>
+  <polygon points="730,190 730,260 717.8756443470179,253.0 717.8756443470179,183.0"  fill="#F4F7FB"  stroke="#13315C" stroke-width="1.2" stroke-linejoin="round"/>
+  <rect x="730" y="190" width="80" height="70" fill="none" stroke="#13315C" stroke-width="1.2"/>
+  <polyline points="730,190 810,190 810,260 730,260" fill="none" stroke="#13315C" stroke-width="1.2"/>
+
+  <text x="742" y="216" class="node-name">Store</text>
+  <text x="742" y="234" class="node-sub">in-memory</text>
+  <text x="742" y="248" class="node-sub">(PoC)</text>
+  <text x="234" y="245" class="edge-lbl">HTTP REST + JSON</text>
+  <text x="234" y="261" class="edge-lbl">X-Request-Id tracing</text>
+  <line x1="220" y1="175" x2="500" y2="175" stroke="url(#edgeGlow)" stroke-width="2" stroke-linecap="round"/>
+  <text x="900" y="100" class="layer-tag">03 &#183; PRODUCTION</text>
+  <path d="M 860.0 438.0
+             a 90.0 22.0 0 0 0 180.0 0
+             v 44
+             a 90.0 22.0 0 0 1 -180.0 0 z" fill="#F4F7FB" stroke="#13315C" stroke-width="1.2"/>
+  <ellipse cx="950" cy="438.0" rx="90.0" ry="22.0" fill="#FFFFFF" stroke="#13315C" stroke-width="1.2"/>
+
+  <text x="950" y="510" class="node-name" text-anchor="middle">GCP Cloud SQL Postgres</text>
+  <text x="950" y="528" class="node-sub" text-anchor="middle">planned for production</text>
+  <line x1="820" y1="370" x2="950" y2="440" stroke="#1B9AAA" stroke-width="2.4"/>
+  <text x="828" y="395" class="edge-lbl">Production swap</text>
+  <text x="828" y="411" class="edge-lbl">in-memory &#8594; Postgres</text>
+  <rect x="40" y="550" width="1020" height="36" rx="4" fill="#F4F7FB" stroke="#8DA9C4" stroke-width="0.6"/>
+  <text x="56" y="572" class="footnote">PoC uses in-memory store for portability &#183; Production path swaps to Cloud SQL Postgres via the same ItemStore interface (no handler changes) &#183; All paths traced via X-Request-Id</text>
 </svg>
